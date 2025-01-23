@@ -1,6 +1,7 @@
 import { Theme } from '@/theme/theme';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { moderateScale } from '@/utils/scale';
 
 interface DisplayProps {
   display: string;
@@ -24,16 +25,19 @@ const Display: React.FC<DisplayProps> = ({ display, result, theme }) => {
 const styles = StyleSheet.create({
   display: {
     flex: 1,
-    padding: 24,
+    padding: moderateScale(20),
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
+    maxWidth: moderateScale(400),
+    alignSelf: 'center',
+    width: '100%',
   },
   expression: {
-    fontSize: 20,
-    marginBottom: 8,
+    fontSize: moderateScale(18),
+    marginBottom: moderateScale(8),
   },
   result: {
-    fontSize: 48,
+    fontSize: moderateScale(40),
     fontWeight: '600',
   },
 });

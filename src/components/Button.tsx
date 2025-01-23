@@ -1,6 +1,9 @@
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { useTheme } from '@/context/themeContext';
+import { moderateScale } from '@/utils/scale';
+import ButtonRow from '@/components/ButtonRow';
+
 
 type ButtonProps = {
   label: string;
@@ -39,22 +42,22 @@ const Button = ({ label, onPress, type = 'number' }: ButtonProps) => {
 
 const styles = StyleSheet.create({
   button: {
-    width: 72,
-    height: 72,
-    borderRadius: 16,
+    width: moderateScale(72),
+    height: moderateScale(72),
+    borderRadius: moderateScale(16),
     justifyContent: 'center',
     alignItems: 'center',
-    margin: 8,
+    margin: moderateScale(8),
     shadowOffset: {
       width: 0,
-      height: 4,
+      height: moderateScale(4),
     },
     shadowOpacity: 1,
-    shadowRadius: 4,
+    shadowRadius: moderateScale(4),
     elevation: 4,
   },
   buttonText: {
-    fontSize: 32,
+    fontSize: moderateScale(28),
     fontWeight: '500',
   },
 });
