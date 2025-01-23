@@ -58,7 +58,7 @@ const Display: React.FC<DisplayProps> = ({ display, result, theme }) => {
       <Animated.Text
         style={[
           styles.expression,
-          { fontFamily: theme.fonts.medium, color: theme.secondary },
+          { fontFamily: theme.fonts.regular, color: theme.secondary },
           expressionAnimatedStyle,
         ]}
         numberOfLines={2}
@@ -68,7 +68,7 @@ const Display: React.FC<DisplayProps> = ({ display, result, theme }) => {
       <Animated.Text
         style={[
           styles.result,
-          { fontFamily: theme.fonts.medium, color: theme.text },
+          { fontFamily: theme.fonts.heavy, color: theme.text },
           resultAnimatedStyle,
         ]}
         numberOfLines={1}
@@ -88,9 +88,12 @@ const styles = StyleSheet.create({
     maxWidth: moderateScale(400),
     alignSelf: "center",
     width: "100%",
+    borderBottomWidth: 0.6,
+    borderBottomColor: "#ddd",
+    
   },
   expression: {
-    fontSize: moderateScale(18),
+    fontSize: moderateScale(20),
     marginBottom: moderateScale(8),
   },
   result: {

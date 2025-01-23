@@ -21,11 +21,11 @@ const Button = ({ label, onPress, type = "number" }: ButtonProps) => {
   const getButtonTextStyle = () => {
     switch (type) {
       case "operator":
-        return { color: theme.primary };
+        return { color: theme.primary, fontFamily: theme.fonts.heavy };
       case "function":
-        return { color: theme.secondary };
+        return { color: theme.secondary, fontFamily: theme.fonts.heavy};
       default:
-        return { color: theme.text };
+        return { color: theme.text, fontFamily: theme.fonts.regular };
     }
   };
   
@@ -34,7 +34,7 @@ const Button = ({ label, onPress, type = "number" }: ButtonProps) => {
   }));
 
   const handlePressIn = () => {
-    scale.value = withSpring(0.95);
+    scale.value = withSpring(0.80);
   };
 
   const handlePressOut = () => {
@@ -58,8 +58,7 @@ const Button = ({ label, onPress, type = "number" }: ButtonProps) => {
         <Text 
           style={[
             styles.buttonText,
-            getButtonTextStyle(),
-            { fontFamily: theme.fonts.medium }
+            getButtonTextStyle()
           ]}>
           {label}
         </Text>

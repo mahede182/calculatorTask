@@ -7,9 +7,9 @@ export const lightTheme = {
   border: '#E8E8E8',
   shadow: 'rgba(0, 0, 0, 0.05)',
   fonts: {
-    regular: 'Avenir',
-    medium: 'Avenir-Medium',
-    heavy: 'Avenir-Heavy'
+    regular: 'AvenirRegular',
+    medium: 'AvenirMedium',
+    heavy: 'AvenirBold'
   }
 };
 
@@ -22,9 +22,9 @@ export const darkTheme = {
   border: '#2D2D2D',
   shadow: 'rgba(0, 0, 0, 0.2)',
   fonts: {
-    regular: 'Avenir',
-    medium: 'Avenir-Medium',
-    heavy: 'Avenir-Heavy'
+    regular: 'AvenirRegular',
+    medium: 'AvenirMedium',
+    bold: 'AvenirBold'
   }
 };
 

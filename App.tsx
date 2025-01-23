@@ -4,6 +4,7 @@ import * as ScreenOrientation from 'expo-screen-orientation';
 import * as Font from 'expo-font';
 import { ThemeProvider } from "@/context/themeContext";
 import { CalculatorScreen } from "@/screens/Calculator";
+import { loadFonts } from "@/constants/fonts";
 
 export default function App() {
   const [fontsLoaded, setFontsLoaded] = useState(false);
@@ -15,11 +16,7 @@ export default function App() {
           ScreenOrientation.lockAsync(
             ScreenOrientation.OrientationLock.PORTRAIT_UP
           ),
-          Font.loadAsync({
-            'AvenirRegular': require('./assets/fonts/avenirRegular.otf'),
-            'AvenirMedium': require('./assets/fonts/avenirMedium.otf'),
-            'AvenirBold': require('./assets/fonts/avenirBold.otf'),
-          })
+          loadFonts()
         ]);
         setFontsLoaded(true);
       } catch (e) {
@@ -33,7 +30,7 @@ export default function App() {
   if (!fontsLoaded) {
     return null;
   }
-
+  
   return (
     <ThemeProvider>
       <StatusBar
