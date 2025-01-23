@@ -1,16 +1,12 @@
-import { StyleSheet, View, SafeAreaView } from 'react-native';
-import { CalculatorScreen } from '@/screens';
+import { useCallback, useEffect, useState } from "react";
+import { StyleSheet, SafeAreaView } from "react-native";
+import { CalculatorScreen } from "@/screens/Calculator";
 
 export default function App() {
+
   return (
-    <SafeAreaView style={{flex: 1}}>
+    <SafeAreaView style={{ flex: 1 }}>
       <CalculatorScreen />
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
