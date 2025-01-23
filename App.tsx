@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { SafeAreaView, StatusBar } from "react-native";
 import * as ScreenOrientation from 'expo-screen-orientation';
-import * as Font from 'expo-font';
 import { ThemeProvider } from "@/context/themeContext";
 import { CalculatorScreen } from "@/screens/Calculator";
 import { loadFonts } from "@/constants/fonts";

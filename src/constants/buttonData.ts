@@ -17,6 +17,6 @@ export const buttons = [
     { label: '-', type: 'operator' as const },
     { label: '.', type: 'number' as const },
     { label: '0', type: 'number' as const },
-    { label: '⌫', type: 'function' as const },
+    { label: 'backspace', type: 'function' as const },
     { label: '=', type: 'operator' as const },
-  ] as const;
+] as const;

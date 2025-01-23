@@ -19,7 +19,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.mahede.calculatorTask"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -31,6 +32,11 @@
       "AvenirRegular": "./assets/fonts/avenirRegular.otf",
       "AvenirMedium": "./assets/fonts/avenirMedium.otf",
       "AvenirBold": "./assets/fonts/avenirBold.otf"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "ee5cd1c2-6793-452e-8b2c-3a3134aee7b8"
+      }
     }
   }
 }

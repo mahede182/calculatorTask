@@ -1,7 +1,8 @@
-import { StyleSheet, Text, TouchableOpacity } from "react-native";
 import React from "react";
+import { StyleSheet, Text, TouchableOpacity } from "react-native";
 import { useTheme } from "@/context/themeContext";
 import { moderateScale } from "@/utils/scale";
+import { Ionicons } from "@expo/vector-icons";
 import Animated, { 
   useAnimatedStyle, 
   useSharedValue, 
@@ -40,6 +41,28 @@ const Button = ({ label, onPress, type = "number" }: ButtonProps) => {
   const handlePressOut = () => {
     scale.value = withSpring(1);
   };
+
+  const renderContent = () => {
+    if (label === 'backspace') {
+      return (
+        <Ionicons 
+          name="backspace-outline" 
+          size={moderateScale(24)} 
+          color={theme.secondary} 
+        />
+      );
+    }
+    return (
+      <Text 
+        style={[
+          styles.buttonText,
+          getButtonTextStyle()
+        ]}>
+        {label}
+      </Text>
+    );
+  };
+
   return (
     <TouchableOpacity
       onPressIn={handlePressIn}
@@ -55,13 +78,7 @@ const Button = ({ label, onPress, type = "number" }: ButtonProps) => {
           },
           animatedStyle,
         ]}>
-        <Text 
-          style={[
-            styles.buttonText,
-            getButtonTextStyle()
-          ]}>
-          {label}
-        </Text>
+        {renderContent()}
       </Animated.View>
     </TouchableOpacity>
   );

@@ -1,6 +1,7 @@
-import { Theme } from "@/theme/theme";
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
 import { StyleSheet, View } from "react-native";
+import { Theme } from "@/theme/theme";
 import { moderateScale } from "@/utils/scale";
 import Animated, {
   useAnimatedStyle,
@@ -21,7 +22,7 @@ const Display: React.FC<DisplayProps> = ({ display, result, theme }) => {
   const expressionTranslateY = useSharedValue(0);
   const resultTranslateY = useSharedValue(0);
 
-  //sytle for expression
+  //animate for expression
   useEffect(() => {
     expressionOpacity.value = 0;
     expressionTranslateY.value = -10;
@@ -32,7 +33,7 @@ const Display: React.FC<DisplayProps> = ({ display, result, theme }) => {
     });
   }, [display]);
 
-  //style for total
+  //animate for total
   useEffect(() => {
     resultOpacity.value = 0;
     resultTranslateY.value = 10;

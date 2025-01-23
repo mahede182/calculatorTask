@@ -1,12 +1,12 @@
-import { StyleSheet, View, SafeAreaView, StatusBar, Platform } from 'react-native';
 import React, { useState } from 'react';
+import { StyleSheet, View, SafeAreaView, StatusBar, Platform } from 'react-native';
 import { useTheme } from '@/context/themeContext';
 import { buttons } from '@/constants/buttonData';
 import Display from '../Display/DisplayScreen';
 import { moderateScale } from '@/utils/scale';
 import ButtonRow from '@/components/ButtonRow';
 import { ThemeToggleButton } from '@/components/ThemeToggleButton';
-import { calculate } from '@/utils/calculator';
+import { calculate, isOperator } from '@/utils/calculator';
 
 const CalculatorScreen = () => {
   const { theme } = useTheme();
@@ -22,7 +22,7 @@ const CalculatorScreen = () => {
         setIsNewCalculation(true);
         break;
 
-      case '⌫':
+      case 'backspace':
         setDisplay((prev) => prev.slice(0, -1));
         break;
 
@@ -33,11 +33,28 @@ const CalculatorScreen = () => {
           setIsNewCalculation(true);
         }
         break;
-
+      //calculation for mathematical precedence (PEMDAS/BODMAS)
       case '()':
-        const openCount = (display.match(/\(/g) || []).length;
-        const closeCount = (display.match(/\)/g) || []).length;
-        setDisplay((prev) => prev + (openCount > closeCount ? ')' : '('));
+        setDisplay((prev) => {
+          const openCount = (prev.match(/\(/g) || []).length;
+          const closeCount = (prev.match(/\)/g) || []).length;
+  
+          if (prev.length > 0) {
+            const lastChar = prev[prev.length - 1];
+            if (openCount === closeCount && !isOperator(lastChar) && lastChar !== '(') {
+              return prev + '×(';
+            }
+          }
+  
+          if (openCount > closeCount && prev.length > 0) {
+            const lastChar = prev[prev.length - 1];
+            if (!isOperator(lastChar) && lastChar !== '(') {
+              return prev + ')';
+            }
+          }
+
+          return prev + '(';
+        });
         break;
 
       case '%':
@@ -57,8 +74,6 @@ const CalculatorScreen = () => {
         break;
     }
   };
-
-  const isOperator = (char: string) => ['+', '-', '×', '÷'].includes(char);
 
   const buttonRows = [
     buttons.slice(0, 4),

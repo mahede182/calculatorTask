@@ -1,7 +1,8 @@
 import React from "react";
-import { StyleSheet, TouchableOpacity, View, Text } from "react-native";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
 import { useTheme } from "@/context/themeContext";
 import { moderateScale } from "@/utils/scale";
+import { Feather } from "@expo/vector-icons";
 
 export const ThemeToggleButton = () => {
   const { isDarkMode, toggleTheme, theme } = useTheme();
@@ -23,7 +24,11 @@ export const ThemeToggleButton = () => {
             transform: [{ translateX: isDarkMode ? moderateScale(28) : 0 }],
           },
         ]}>
-        <Text style={styles.icon}>{isDarkMode ? "🌙" : "☀️"}</Text>
+        <Feather
+          name={isDarkMode ? "moon" : "sun"}
+          size={moderateScale(16)}
+          color="#FFFFFF"
+        />
       </View>
     </TouchableOpacity>
   );
@@ -42,11 +47,5 @@ const styles = StyleSheet.create({
     borderRadius: moderateScale(14),
     justifyContent: "center",
     alignItems: "center",
-  },
-  icon: {
-    fontSize: moderateScale(16),
-    textAlign: "center",
-    includeFontPadding: false,
-    textAlignVertical: "center",
   },
 });
