@@ -6,7 +6,7 @@ A simple calculator application built with Expo, React Native and TypeScript.
 
 ![Calculator Screenshot](https://i.ibb.co.com/MgMc0vP/Screenshot-1737641760.png)
 
-
+live android: https://appetize.io/app/android/com.mahede.calculatorTask
 
 ### Features
 
