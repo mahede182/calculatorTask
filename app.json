@@ -23,6 +23,14 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-font"
+    ],
+    "fonts": {
+      "AvenirRegular": "./assets/fonts/avenirRegular.otf",
+      "AvenirMedium": "./assets/fonts/avenirMedium.otf",
+      "AvenirBold": "./assets/fonts/avenirBold.otf"
     }
   }
 }

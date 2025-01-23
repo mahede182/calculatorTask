@@ -6,12 +6,60 @@ import Display from '../Display/DisplayScreen';
 import { moderateScale } from '@/utils/scale';
 import ButtonRow from '@/components/ButtonRow';
 import { ThemeToggleButton } from '@/components/ThemeToggleButton';
+import { calculate } from '@/utils/calculator';
 
 const CalculatorScreen = () => {
   const { theme } = useTheme();
-  const [display, setDisplay] = useState('(2495 x 3) + 6615');
-  const [result, setResult] = useState('14,100');
-  
+  const [display, setDisplay] = useState('');
+  const [result, setResult] = useState('0');
+  const [isNewCalculation, setIsNewCalculation] = useState(true);
+
+  const handleButtonPress = (label: string) => {
+    switch (label) {
+      case 'AC':
+        setDisplay('');
+        setResult('0');
+        setIsNewCalculation(true);
+        break;
+
+      case '⌫':
+        setDisplay((prev) => prev.slice(0, -1));
+        break;
+
+      case '=':
+        if (display) {
+          const calculatedResult = calculate(display);
+          setResult(calculatedResult);
+          setIsNewCalculation(true);
+        }
+        break;
+
+      case '()':
+        const openCount = (display.match(/\(/g) || []).length;
+        const closeCount = (display.match(/\)/g) || []).length;
+        setDisplay((prev) => prev + (openCount > closeCount ? ')' : '('));
+        break;
+
+      case '%':
+        if (display) {
+          const value = parseFloat(display) / 100;
+          setDisplay(value.toString());
+        }
+        break;
+
+      default:
+        if (isNewCalculation && !isOperator(label)) {
+          setDisplay(label);
+          setIsNewCalculation(false);
+        } else {
+          setDisplay((prev) => prev + label);
+        }
+        break;
+    }
+  };
+
+  const isOperator = (char: string) => ['+', '-', '×', '÷'].includes(char);
+
   const buttonRows = [
     buttons.slice(0, 4),
     buttons.slice(4, 8),
@@ -36,7 +84,7 @@ const CalculatorScreen = () => {
             <ButtonRow
               key={index}
               buttons={row}
-              onPress={() => {}}
+              onPress={handleButtonPress}
             />
           ))}
         </View>
